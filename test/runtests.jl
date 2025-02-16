@@ -34,7 +34,7 @@ projected = [
   EqualEarth
 ]
 
-testfiles = ["ellipsoids.jl", "datums.jl", "crs.jl", "strings.jl", "get.jl", "misc.jl"]
+testfiles = ["ellipsoids.jl", "datums.jl", "crs.jl", "strings.jl", "get.jl", "misc.jl", "test_wkt_writer.jl"]
 
 # --------------------------------
 # RUN TESTS WITH SINGLE PRECISION
