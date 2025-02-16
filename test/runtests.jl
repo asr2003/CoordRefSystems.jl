@@ -4,6 +4,7 @@ using StableRNGs
 using ArchGDAL
 using ArchGDAL.GDAL
 using Test
+using WKTWriter
 
 using CoordRefSystems: Met, Deg, Rad
 using Unitful: m, mm, cm, km, rad, °, s
@@ -34,7 +35,7 @@ projected = [
   EqualEarth
 ]
 
-testfiles = ["ellipsoids.jl", "datums.jl", "crs.jl", "strings.jl", "get.jl", "misc.jl"]
+testfiles = ["ellipsoids.jl", "datums.jl", "crs.jl", "strings.jl", "get.jl", "misc.jl", "test_wktwriter.jl"]
 
 # --------------------------------
 # RUN TESTS WITH SINGLE PRECISION
