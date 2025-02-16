@@ -27,6 +27,7 @@ include("shift.jl")
 include("codes.jl")
 include("strings.jl")
 include("get.jl")
+include("wkt_writer.jl")
 
 export
   # revolution ellipsoids
