@@ -1,5 +1,3 @@
-using CoordRefSystems
-
 @testset "WKT-CRS 2 Writer" begin
     crs1 = LatLon(45.0, 90.0)
 
