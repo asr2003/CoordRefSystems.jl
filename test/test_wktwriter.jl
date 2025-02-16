@@ -1,7 +1,7 @@
 @testset "WKT-CRS 2 Writer" begin
     crs1 = LatLon(45.0, 90.0)
 
-    crs2 = utm(33, true, 500000.0, 4649776.22482)
+    crs2 = utm(33, true)
 
     wkt_crs1 = wkt(crs1)
     wkt_crs2 = wkt(crs2)
