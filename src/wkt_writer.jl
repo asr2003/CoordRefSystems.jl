@@ -2,6 +2,7 @@ module WKTWriter
 
 using DataDeps
 using CoordRefSystems
+using CoordRefSystems: CRS
 
 """
     CoordRefSystems.wkt(crs::CRS)::AbstractString
