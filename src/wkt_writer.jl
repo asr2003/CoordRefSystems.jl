@@ -4,6 +4,8 @@ using DataDeps
 using CoordRefSystems
 using CoordRefSystems: CRS
 
+export wkt
+
 """
     CoordRefSystems.wkt(crs::CRS)::AbstractString
 
