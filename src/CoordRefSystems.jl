@@ -137,5 +137,6 @@ export
   EPSG,
   ESRI
 
-  
+  # WKT Writer
+  wkt
 end
