@@ -1,7 +1,3 @@
-using Test
-using CoordRefSystems
-using WKTWriter
-
 @testset "WKT-CRS 2 Writer" begin
     crs1 = CRS(name="WGS 84", datum="World Geodetic System 1984", 
                ellipsoid="WGS 84", ellipsoid_major_axis=6378137, ellipsoid_flattening=298.257223563,

@@ -27,7 +27,7 @@ include("shift.jl")
 include("codes.jl")
 include("strings.jl")
 include("get.jl")
-include("wkt_writer.jl")
+include("wktwriter.jl")
 
 export
   # revolution ellipsoids
@@ -137,4 +137,5 @@ export
   EPSG,
   ESRI
 
+  
 end
