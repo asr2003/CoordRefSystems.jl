@@ -1,6 +1,6 @@
 module WKTWriter
 
-using JSON
+using DataDeps
 using CoordRefSystems
 
 """
@@ -9,8 +9,13 @@ using CoordRefSystems
 Convert a `CRS` object into an OGC WKT-CRS 2 formatted string.
 """
 function wkt(crs::CRS)::AbstractString
-    if hasproperty(crs, :epsg)
-        epsg_code = crs.epsg
+    epsg_code = try
+        CoordRefSystems.code(crs)
+    catch
+        nothing
+    end
+
+    if epsg_code !== nothing
         return fetch_wkt_from_epsg(epsg_code)
     else
         return construct_wkt_from_metadata(crs)
@@ -23,12 +28,15 @@ end
 Fetch the OGC WKT 2 string for a CRS using its EPSG code from a local database.
 """
 function fetch_wkt_from_epsg(epsg_code::Integer)::AbstractString
-    db_path = joinpath(@__DIR__, "epsg_wkt2_database.json")
+    db_path = datadep"EPSG_WKT2_DB/epsg.wkt"
 
     if isfile(db_path)
-        db = JSON.parsefile(db_path)
-        if haskey(db, string(epsg_code))
-            return db[string(epsg_code)]
+        open(db_path, "r") do file
+            for line in eachline(file)
+                if occursin("EPSG[\"$epsg_code\"", line)
+                    return line
+                end
+            end
         end
     end
 
@@ -74,5 +82,24 @@ function construct_wkt_from_metadata(crs::CRS)::AbstractString
 
     return wkt
 end
+
+"""
+    register_epsg_database()
+
+Registers the EPSG WKT2 database using `DataDeps.jl` for offline storage.
+"""
+function register_epsg_database()
+    register(DataDep(
+        "EPSG_WKT2_DB",
+        """
+        This is the EPSG WKT2 Database, which contains a collection of WKT representations
+        of coordinate reference systems. The database is sourced from epsg.io.
+        """,
+        "https://github.com/OSGeo/PROJ-data/releases/latest/download/epsg.wkt",
+        fetch_method = :download
+    ))
+end
+
+register_epsg_database()
 
 end
