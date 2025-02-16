@@ -29,6 +29,8 @@ include("strings.jl")
 include("get.jl")
 include("wktwriter.jl")
 
+using .WKTWriter
+
 export
   # revolution ellipsoids
   RevolutionEllipsoid,

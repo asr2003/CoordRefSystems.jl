@@ -1,3 +1,7 @@
+# ------------------------------------------------------------------
+# Licensed under the MIT License. See LICENSE in the project root.
+# ------------------------------------------------------------------
+
 module WKTWriter
 
 using CoordRefSystems
@@ -16,7 +20,7 @@ Convert a `CRS` object into an OGC WKT-CRS 2 formatted string.
 """
 function wkt(crs::CRS)::AbstractString
     epsg_code = try
-        CoordRefSystems.code(crs)  # Fetch EPSG code if available
+        CoordRefSystems.code(crs)
     catch
         nothing
     end
